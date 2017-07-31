@@ -17,38 +17,33 @@ class SurvivorsController {
       item.points = pointsList[itemsList.indexOf(item.name)]
     })
 
-    survivor.save((err, survivor) => {
-      if (err) {
+    survivor.save()
+      .then(survivor => {
+        res.json(survivor)
+      }).catch(err => {
         res.status(500)
           .json(buildError(err.message))
-      } else {
-        res.json(survivor)
-      }
-    })
+      })
   }
 
   get (req, res) {
-    Survivor.find({ id: req.params.id }, (err, survivors) => {
-      if (err) {
-        res.status(500)
-          .json(buildError(err.message))
-      } else {
-        if (survivors.length == 0) {
+    Survivor.findOne({ id: req.params.id })
+      .then(survivor => {
+        if (survivor === null) {
           res.status(404)
             .json(buildError(`Survivor #${req.params.id} not found`))
         } else {
-          res.json(survivors[0])
+          res.json(survivor)
         }
-      }
-    })
+      }).catch(err => {
+        res.status(500)
+          .json(buildError(err.message))
+      })
   }
 
   getAll (req, res) {
-    Survivor.find({}, (err, survivors) => {
-      if (err) {
-        res.status(500)
-          .json(buildError(err.message))
-      } else {
+    Survivor.find({})
+      .then(survivors => {
         const ret = survivors.map(survivor => {
           return {
             id: survivor.id,
@@ -57,8 +52,11 @@ class SurvivorsController {
         })
 
         res.json(ret)
-      }
-    })
+      }).catch(err => {
+        res.status(500)
+          .json(buildError(err.message))
+      })
+  }
   }
 }
 
