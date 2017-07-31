@@ -1,0 +1,24 @@
+[
+  {
+    "id": 26,
+    "items": [
+      {
+        "name": "Ammunition",
+        "amount": 8
+      }
+    ]
+  },
+  {
+    "id": 27,
+    "items": [
+      {
+        "name": "Ammunition",
+        "amount": 4
+      },
+      {
+        "name": "Water",
+        "amount": 2
+      }
+    ]
+  }
+]

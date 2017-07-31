@@ -6,7 +6,9 @@ const bodyParser = require('body-parser')
 
 const app = express()
 const port = process.env.ZSSN_PORT || null
+
 const survivorsRoutes = require('./api/routes/survivors')
+const tradeRoutes = require('./api/routes/trade')
 
 if (port === null) {
   console.error('Define the server port as the environment variable ZSSN_PORT')
@@ -22,6 +24,7 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json())
 
 survivorsRoutes(app)
+tradeRoutes(app)
 
 app.listen(port)
 
