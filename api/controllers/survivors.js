@@ -57,6 +57,27 @@ class SurvivorsController {
           .json(buildError(err.message))
       })
   }
+
+  updateLocation (req, res) {
+    Survivor.findOne({ id: req.params.id })
+      .then(survivor => {
+        if (survivor === null) {
+          res.status(404)
+            .json(buildError(`Survivor #${req.params.id} not found`))
+        } else if (!req.body.latitude && !req.body.longitude) {
+          res.status(400)
+            .json(buildError(`You must send both latitude AND longitude`))
+        } else {
+          survivor.latitude = req.body.latitude
+          survivor.longitude = req.body.longitude
+          survivor.save()
+
+          res.json(survivor)
+        }
+      }).catch(err => {
+        res.status(500)
+          .json(buildError(err.message))
+      })
   }
 }
 

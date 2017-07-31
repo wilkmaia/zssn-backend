@@ -11,6 +11,9 @@ const router = function (app) {
 
   app.route('/survivors/:id')
     .get(controller.get)
+
+  app.route('/survivors/:id/location')
+    .post(controller.updateLocation)
 }
 
 module.exports = router
