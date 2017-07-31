@@ -4,10 +4,7 @@ const mongoose = require('mongoose')
 const SurvivorSchema = require('../models/survivors')
 const Survivor = mongoose.model('Survivors')
 
-const { buildError } = require('../utils')
-
-const itemsList = ['Water', 'Food', 'Medication', 'Ammunition']
-const pointsList = [4, 3, 2, 1]
+const { buildError, itemsList, pointsList } = require('../utils')
 
 class SurvivorsController {
   create (req, res) {

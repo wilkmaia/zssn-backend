@@ -4,7 +4,8 @@ const mongoose = require('mongoose')
 const autoIncrement = require('mongoose-auto-increment')
 
 const Schema = mongoose.Schema
-const itemsList = ['Water', 'Food', 'Medication', 'Ammunition']
+const { itemsList } = require('../utils')
+
 const connection = mongoose.createConnection('mongodb://localhost/zssn', {
   useMongoClient: true,
 })

@@ -11,7 +11,7 @@
     },
     {
       "name": "Ammunition",
-      "points": 7
+      "amount": 7
     }
   ]
 }
