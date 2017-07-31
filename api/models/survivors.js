@@ -19,6 +19,7 @@ const ItemSchema = new Schema({
   },
   amount: {
     type: Number,
+    min: [1, 'The amount must be positive'],
     default: 1,
   },
   points: {
@@ -50,6 +51,7 @@ const SurvivorSchema = new Schema({
   },
   age: {
     type: Number,
+    min: [0, 'The survivor must be at least 0 years old'],
     required: 'A survivor needs an age',
   },
   gender: {
@@ -57,12 +59,16 @@ const SurvivorSchema = new Schema({
     enum: ['M', 'F'],
     required: 'A survivor needs a sex',
   },
-  location_x: {
+  latitude: {
     type: Number,
+    min: -90,
+    max: 90,
     required: 'A survivor needs its location (x)',
   },
-  location_y: {
+  longitude: {
     type: Number,
+    min: -180,
+    max: 180,
     required: 'A survivor needs its location (y)',
   },
   inventory: {
@@ -90,8 +96,8 @@ SurvivorSchema.set('toJSON', {
       name: ret.name,
       age: ret.age,
       gender: ret.gender,
-      last_location_x: ret.location_x,
-      last_location_y: ret.location_y,
+      last_latitude: ret.latitude,
+      last_longitude: ret.longitude,
       inventory: ret.inventory,
       infected: ret.infected,
     }
