@@ -14,6 +14,9 @@ const router = function (app) {
 
   app.route('/survivors/:id/location')
     .post(controller.updateLocation)
+
+  app.route('/survivors/:id/infected')
+    .post(controller.flagInfected)
 }
 
 module.exports = router

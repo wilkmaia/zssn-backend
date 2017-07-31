@@ -79,6 +79,10 @@ const SurvivorSchema = new Schema({
     type: Boolean,
     default: false,
   },
+  infected_referers: {
+    type: [Number],
+    default: [],
+  },
   created_at: {
     type: Date,
     default: Date.now,
@@ -100,6 +104,7 @@ SurvivorSchema.set('toJSON', {
       last_longitude: ret.longitude,
       inventory: ret.inventory,
       infected: ret.infected,
+      infected_referers: ret.infected_referers,
     }
 
     return retJson
