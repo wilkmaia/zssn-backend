@@ -3,6 +3,6 @@ sudo: required
 services:
   - docker
 
-langauge: node_js
+language: node_js
 node_js:
-  - "iojs"
+  - "node"
