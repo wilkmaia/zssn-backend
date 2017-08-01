@@ -63,13 +63,13 @@ const SurvivorSchema = new Schema({
     type: Number,
     min: -90,
     max: 90,
-    required: 'A survivor needs its location (x)',
+    required: 'A survivor needs its latitude',
   },
   longitude: {
     type: Number,
     min: -180,
     max: 180,
-    required: 'A survivor needs its location (y)',
+    required: 'A survivor needs its longitude',
   },
   inventory: {
     type: [ItemSchema],
