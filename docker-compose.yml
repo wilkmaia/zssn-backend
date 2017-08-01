@@ -1,0 +1,19 @@
+version: '2'
+
+services:
+  mongo:
+    image: mongo:latest
+    ports:
+      - 27017:27017
+
+  zssn:
+    image: wilkmaia/zssn:latest
+    volumes:
+      - ./:/zssn
+    ports:
+      - 1234:80
+    links:
+      - mongo
+    environment:
+      - ZSSN_PORT=80
+      - MONGODB_ADDR=mongo

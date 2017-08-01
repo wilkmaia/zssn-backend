@@ -13,10 +13,10 @@ const router = function (app) {
     .get(controller.get)
 
   app.route('/survivors/:id/location')
-    .post(controller.updateLocation)
+    .put(controller.updateLocation)
 
   app.route('/survivors/:id/infected')
-    .post(controller.flagInfected)
+    .put(controller.flagInfected)
 }
 
 module.exports = router

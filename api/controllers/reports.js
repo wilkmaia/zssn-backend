@@ -32,7 +32,6 @@ class ReportsController {
       survivors.map(survivor => {
         ++total
         survivor.inventory.map(item => {
-          console.log(item)
           resources[item.name.toLowerCase()] += item.amount
         })
 
