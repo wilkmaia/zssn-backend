@@ -1,0 +1,17 @@
+{
+  "name": "Wilk Maia",
+  "age": 23,
+  "gender": "M",
+  "latitude": 10,
+  "longitude": 11,
+  "inventory": [
+    {
+      "name": "Water",
+      "amount": 1
+    },
+    {
+      "name": "Ammunition",
+      "amount": 7
+    }
+  ]
+}

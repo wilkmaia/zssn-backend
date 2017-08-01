@@ -1,0 +1,35 @@
+{
+  "name": "zssn-backend",
+  "version": "1.0.0",
+  "description": "Zombie Survivor Social Network Backend",
+  "main": "node server.js",
+  "scripts": {
+    "dev": "$(npm bin)/nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wilkmaia/zssn-backend.git"
+  },
+  "author": "Wilk Maia (wilkmaia@gmail.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wilkmaia/zssn-backend/issues"
+  },
+  "homepage": "https://github.com/wilkmaia/zssn-backend#readme",
+  "devDependencies": {
+    "eslint": "^4.3.0",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-node": "^5.1.1",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "nodemon": "^1.11.0"
+  },
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "mongoose": "^4.11.4",
+    "mongoose-auto-increment": "^5.0.1"
+  }
+}
