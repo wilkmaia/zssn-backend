@@ -1,3 +1,5 @@
+[travis](https://api.travis-ci.com/wilkmaia/zssn-backend.svg?token=GP6PkojaD5yntqRWPVY4)
+
 # zssn-backend
 The Zombie Survival Social Network Backend.
 

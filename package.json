@@ -4,7 +4,7 @@
   "description": "Zombie Survivor Social Network Backend",
   "main": "make docker",
   "scripts": {
-    "test": "make test",
+    "test": "make build && make test",
     "dev": "$(npm bin)/nodemon server.js"
   },
   "repository": {

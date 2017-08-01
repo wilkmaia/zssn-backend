@@ -1,3 +1,5 @@
+.PHONY: test
+
 build:
 	@docker pull mongo:latest
 	@docker build -t wilkmaia/zssn .
