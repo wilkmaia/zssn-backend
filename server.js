@@ -9,6 +9,7 @@ const port = process.env.ZSSN_PORT || null
 
 const survivorsRoutes = require('./api/routes/survivors')
 const tradeRoutes = require('./api/routes/trade')
+const reportsRoutes = require('./api/routes/reports')
 
 if (port === null) {
   console.error('Define the server port as the environment variable ZSSN_PORT')
@@ -25,6 +26,7 @@ app.use(bodyParser.json())
 
 survivorsRoutes(app)
 tradeRoutes(app)
+reportsRoutes(app)
 
 app.listen(port)
 
