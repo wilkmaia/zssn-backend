@@ -6,9 +6,7 @@ const autoIncrement = require('mongoose-auto-increment')
 const Schema = mongoose.Schema
 const { itemsList } = require('../utils')
 
-const connection = mongoose.createConnection('mongodb://localhost/zssn', {
-  useMongoClient: true,
-})
+const connection = mongoose.createConnection('mongodb://localhost/zssn')
 
 autoIncrement.initialize(connection)
 
