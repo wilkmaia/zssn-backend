@@ -29,6 +29,7 @@ class SurvivorsController {
         if (survivor === null) {
           res.status(404)
             .json(buildError(`Survivor #${req.params.id} not found`))
+          return
         } else {
           res.json(survivor)
         }
@@ -61,9 +62,11 @@ class SurvivorsController {
         if (survivor === null) {
           res.status(404)
             .json(buildError(`Survivor #${req.params.id} not found`))
+          return
         } else if (!req.body.latitude && !req.body.longitude) {
           res.status(400)
             .json(buildError(`You must send both latitude AND longitude`))
+          return
         } else {
           survivor.latitude = req.body.latitude
           survivor.longitude = req.body.longitude
@@ -83,12 +86,14 @@ class SurvivorsController {
         if (survivor === null) {
           res.status(404)
             .json(buildError(`Survivor #${req.params.id} not found`))
+          return
         } else {
           Survivor.findOne({ id: req.body.id })
             .then(referer => {
               if (referer === null) {
                 res.status(404)
                   .json(buildError(`Survivor #${req.body.id} not found`))
+                return
               }
               if (survivor.infected_referers.indexOf(referer.id) === -1) {
                 const count = survivor.infected_referers.push(referer.id)
