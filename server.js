@@ -5,7 +5,8 @@ const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 
 const app = express()
-const port = process.env.ZSSN_PORT || null
+const port = process.env.ZSSN_PORT || 1234
+const mongoAddr = process.env.MONGODB_ADDR || 'localhost'
 
 const healthCheckRoutes = require('./api/routes/health_check')
 const survivorsRoutes = require('./api/routes/survivors')
@@ -18,7 +19,7 @@ if (port === null) {
 }
 
 mongoose.Promise = global.Promise
-mongoose.connect('mongodb://localhost/zssn')
+mongoose.connect(`mongodb://${mongoAddr}/zssn`)
 
 app.use(bodyParser.urlencoded({
   extended: true,

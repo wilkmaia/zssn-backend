@@ -2,11 +2,12 @@
 
 const mongoose = require('mongoose')
 const autoIncrement = require('mongoose-auto-increment')
-
-const Schema = mongoose.Schema
 const { itemsList } = require('../utils')
 
-const connection = mongoose.createConnection('mongodb://localhost/zssn')
+const Schema = mongoose.Schema
+const mongoAddr = process.env.MONGODB_ADDR || 'localhost'
+
+const connection = mongoose.createConnection(`mongodb://${mongoAddr}/zssn`)
 
 autoIncrement.initialize(connection)
 
