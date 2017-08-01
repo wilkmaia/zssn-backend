@@ -18,7 +18,7 @@ class SurvivorsController {
       .then(survivor => {
         res.json(survivor)
       }).catch(err => {
-        res.status(500)
+        res.status(400)
           .json(buildError(err.message))
       })
   }
@@ -63,10 +63,16 @@ class SurvivorsController {
           res.status(404)
             .json(buildError(`Survivor #${req.params.id} not found`))
           return
-        } else if (!req.body.latitude && !req.body.longitude) {
+        } else if (!req.body.latitude || !req.body.longitude) {
           res.status(400)
             .json(buildError(`You must send both latitude AND longitude`))
           return
+        } else if (req.body.latitude > 90 || req.body.latitude < -90) {
+          res.status(400)
+            .json(buildError('Latitude must be a value between -90 and 90.'))
+        } else if (req.body.longitude > 180 || req.body.longitude < -180) {
+          res.status(400)
+            .json(buildError('Longitude must be a value between -90 and 90.'))
         } else {
           survivor.latitude = req.body.latitude
           survivor.longitude = req.body.longitude
