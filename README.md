@@ -6,13 +6,13 @@ animals, making them flesh hungry beasts.
 This service is the only thing you can use to keep track of the survivors of
 this apocalypse.
 
-### Installing
+## Installing
 
 Download the application and run:
 
     make build
 
-### Setup
+## Setup
 
 Set the MongoDB address and the port the server will listen to with environment
 variables:
@@ -30,7 +30,13 @@ On fish:
 The values used on the example are the default values. To use them, no setup
 is needed.
 
-### Running
+## Testing
+
+Run the automated tests with:
+
+    make test
+
+## Running
 
 There are two ways you can run the application:
 
@@ -42,22 +48,30 @@ There are two ways you can run the application:
 
        make docker
 
-### API Routes
+## API Routes
 
-#### GET /_health_check
+All routes that receive a payload expect a body containing JSON data. All error 
+responses are sent to the user with to format
+
+    {
+      error: true,
+      message: `message`,
+    }
+
+### GET /_health_check
 
 Should return an empty response with a `200` response code if the application
 started with no issues.
 
-#### GET /survivors
+### GET /survivors
 
 Retrieves a list of all known survivors with their IDs and names.
 
-#### GET /survivors/:id
+### GET /survivors/:id
 
 Retrieves information on the specified survivor.
 
-#### POST /survivors
+### POST /survivors
 
 Registers a new survivor. Sample payload can be found at `samples/survivor.json`.
 
@@ -68,12 +82,12 @@ A survivor needs an inventory which can contain four kinds of items:
 * `Medication` - 2 points
 * `Ammunition` - 1 point
 
-#### PUT /survivors/:id/location
+### PUT /survivors/:id/location
 
 Updates the specified survivor's location. Sample payload can be found at 
 `samples/location.json`.
 
-#### PUT /survivors/:id/infected
+### PUT /survivors/:id/infected
 
 Flags the specified survivor as infected. Sample payload can be found at 
 `samples/infected.json`
@@ -81,7 +95,7 @@ Flags the specified survivor as infected. Sample payload can be found at
 If you want to flag a survivor as infected (including yourself), send your `id` 
 on the payload of the request and the survivor's `id` as the request param.
 
-#### POST /trade
+### POST /trade
 
 Trades items between two survivors. Sample payload can be found at 
 `samples/trade.json`.
@@ -95,6 +109,12 @@ with a name and an amount.
 
 The sum of the points of each survivor's items on the trade must be the same.
 
-#### GET /reports
+### GET /reports
 
 Retrieves a report on the human situation.
+
+## Known issues
+
+### Testing
+
+* The tests create new survivors and do not delete them.

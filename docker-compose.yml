@@ -17,3 +17,14 @@ services:
     environment:
       - ZSSN_PORT=80
       - MONGODB_ADDR=mongo
+
+  test:
+    image: wilkmaia/zssn:latest
+    command: /zssn/node_modules/.bin/mocha 
+    volumes:
+      - ./:/zssn
+    links:
+      - zssn
+    environment:
+      - ZSSN_PORT=80
+      - ZSSN_ADDR=zssn
