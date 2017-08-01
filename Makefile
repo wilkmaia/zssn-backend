@@ -8,3 +8,6 @@ docker:
 local:
 	@docker-compose up -d mongo
 	@node server.js
+
+test:
+	@docker-compose up test
